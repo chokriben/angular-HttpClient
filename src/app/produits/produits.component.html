@@ -1,61 +1,68 @@
-<div>
-  <h1>Fiche Produit</h1>
-  <form #produitForm="ngForm" (ngSubmit)="validerFormulaire(produitForm)">
+<div class="container">
+  <div class="form-container">
+    <h1>Fiche Produit</h1>
+    <form #produitForm="ngForm" (ngSubmit)="validerFormulaire(produitForm)">
+      <div class="form-group">
+        <label for="id">Id:</label>
+        <input
+          id="id"
+          name="id"
+          type="text"
+          [(ngModel)]="produitCourant.id"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="code">Code:</label>
+        <input type="text" name="code" [(ngModel)]="produitCourant.code" />
+      </div>
+      <div class="form-group">
+        <label for="designation">Désignation:</label>
+        <input
+          type="text"
+          name="designation"
+          [(ngModel)]="produitCourant.designation"
+        />
+      </div>
+      <div class="form-group">
+        <label for="prix">Prix:</label>
+        <input type="text" name="prix" [(ngModel)]="produitCourant.prix" />
+      </div>
+      <div class="form-actions">
+        <button type="submit" #validerButton [disabled]="!produitForm.form.valid">
+          Valider
+        </button>
+        <button type="button" (click)="effacerSaisie()">Effacer</button>
+      </div>
+    </form>
+  </div>
 
-    <table>
-      <tr>
-        <td>Id:</td>
-        <td><input id="id" name="id" type="text" [(ngModel)]="produitCourant.id" required /></td>
-      </tr>
-      <tr>
-        <td>Code:</td>
-        <td><input type="text" name="code" [(ngModel)]="produitCourant.code" /></td>
-      </tr>
-      <tr>
-        <td>Désignation:</td>
-        <td><input type="text" name="designation" [(ngModel)]="produitCourant.designation" /></td>
-      </tr>
-      <tr>
-        <td>Prix:</td>
-        <td><input type="text" name="prix" [(ngModel)]="produitCourant.prix" /></td>
-      </tr>
-      <tr>
-        <td colspan="2" align="center">
-          <button type="submit" [disabled]="!produitForm.form.valid">Valider</button>
-          <button type="button" (click)="effacerSaisie()">Effacer</button>
-        </td>
-      </tr>
+  <div class="list-container">
+    <h1>Liste des produits</h1>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Code</th>
+          <th>Désignation</th>
+          <th>Prix</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of produits">
+          <td>{{ p.id }}</td>
+          <td>{{ p.code }}</td>
+          <td>{{ p.designation }}</td>
+          <td>{{ p.prix }}</td>
+          <td>
+            <button (click)="editerProduit(p)">Editer</button>
+          </td>
+          <td>
+            <button type="button" (click)="supprimerProduit(p)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
-  </form>
-</div>
-
-<div>
-  <h1>Liste des produits</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Code</th>
-        <th>Désignation</th>
-        <th>Prix</th>
-        <th colspan="2">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of produits">
-        <td>{{ p.id }}</td>
-        <td><input type="text" [(ngModel)]="p.code" /></td>
-        <td><input type="text" [(ngModel)]="p.designation" /></td>
-        <td><input type="number" [(ngModel)]="p.prix" /></td>
-        <td>
-          <button type="button" (click)="mettreAJourProduit(produitCourant, p)">Edit</button>
-
-
-        </td>
-        <td>
-          <button type="button" (click)="supprimerProduit(p)">Supprimer</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  </div>
 </div>
