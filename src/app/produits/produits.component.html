@@ -1,0 +1,61 @@
+<div>
+  <h1>Fiche Produit</h1>
+  <form #produitForm="ngForm" (ngSubmit)="validerFormulaire(produitForm)">
+
+    <table>
+      <tr>
+        <td>Id:</td>
+        <td><input id="id" name="id" type="text" [(ngModel)]="produitCourant.id" required /></td>
+      </tr>
+      <tr>
+        <td>Code:</td>
+        <td><input type="text" name="code" [(ngModel)]="produitCourant.code" /></td>
+      </tr>
+      <tr>
+        <td>Désignation:</td>
+        <td><input type="text" name="designation" [(ngModel)]="produitCourant.designation" /></td>
+      </tr>
+      <tr>
+        <td>Prix:</td>
+        <td><input type="text" name="prix" [(ngModel)]="produitCourant.prix" /></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <button type="submit" [disabled]="!produitForm.form.valid">Valider</button>
+          <button type="button" (click)="effacerSaisie()">Effacer</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<div>
+  <h1>Liste des produits</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Désignation</th>
+        <th>Prix</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of produits">
+        <td>{{ p.id }}</td>
+        <td><input type="text" [(ngModel)]="p.code" /></td>
+        <td><input type="text" [(ngModel)]="p.designation" /></td>
+        <td><input type="number" [(ngModel)]="p.prix" /></td>
+        <td>
+          <button type="button" (click)="mettreAJourProduit(produitCourant, p)">Edit</button>
+
+
+        </td>
+        <td>
+          <button type="button" (click)="supprimerProduit(p)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

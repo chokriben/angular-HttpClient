@@ -1,0 +1,16 @@
+{
+  "produits": [
+    {
+      "id": "1",
+      "code": "x12",
+      "designation": "chaiisee",
+      "prix": "240"
+    },
+    {
+      "id": "2",
+      "code": "x12",
+      "designation": "Panier plastique",
+      "prix": "240"
+    }
+  ]
+}
