@@ -10,7 +10,8 @@ export class AppComponent {
   [
     {titre:"Accueil",route:"/accueil"},
     {titre:"Liste Des Produit",route:"/produits"},
-    {titre:"Ajouter Produit",route:"/ajouterProduit"}
+    {titre:"Ajouter Produit",route:"/ajouterProduit"},
+    {titre:"About",route:"/about"}
   ]
   actionCourante:any;
   setActionCourante(a:any){

@@ -106,18 +106,22 @@ export class ProduitsComponent implements OnInit {
   }
 
   supprimerProduit(produit: Produit) {
-    this.sendDeleteRequest(
-      `${BASE_URL}/${produit.id}`,
-      () => {
-        const index = this.produits.indexOf(produit);
-        if (index !== -1) {
-          this.produits.splice(index, 1);
-          this.message = 'Le produit a été supprimé avec succès.';
-        }
-      },
-      'Erreur lors de la suppression du produit.'
-    );
-  }
+    const confirmation = confirm('Voulez-vous vraiment supprimer ce produit ?');
+    if (confirmation) {
+        this.sendDeleteRequest(
+            `${BASE_URL}/${produit.id}`,
+            () => {
+                const index = this.produits.indexOf(produit);
+                if (index !== -1) {
+                    this.produits.splice(index, 1);
+                    this.message = 'Le produit a été supprimé avec succès.';
+                }
+            },
+            'Erreur lors de la suppression du produit.'
+        );
+    }
+}
+
 
   editerProduit(produit: Produit) {
     this.produitCourant = { ...produit }; // Copie des détails du produit sélectionné dans produitCourant

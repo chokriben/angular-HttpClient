@@ -8,6 +8,7 @@ import { AjoutProduitComponent } from './ajout-produit/ajout-produit.component';
 import { FormsModule } from '@angular/forms';
 import { ProduitsComponent } from './produits/produits.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     AccueilComponent,
     ProduitsComponent,
-    AjoutProduitComponent
+    AjoutProduitComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

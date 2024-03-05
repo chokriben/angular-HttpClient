@@ -1,1 +1,38 @@
-<p>ajout-produit works!</p>
+<div class="container">
+  <div class="form-container">
+    <h1>Fiche Produit</h1>
+    <form #produitForm="ngForm">
+      <div class="form-group">
+        <label for="id">Id:</label>
+        <input
+          id="id"
+          name="id"
+          type="text"
+
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="code">Code:</label>
+        <input type="text" name="code" />
+      </div>
+      <div class="form-group">
+        <label for="designation">Désignation:</label>
+        <input
+          type="text"
+          name="designation"
+
+        />
+      </div>
+      <div class="form-group">
+        <label for="prix">Prix:</label>
+        <input type="text" name="prix" />
+      </div>
+      <div class="form-actions">
+        <button type="submit" #validerButton [disabled]="!produitForm.form.valid">
+          Valider
+        </button>
+        <button type="button">Effacer</button>
+      </div>
+    </form>
+  </div>
